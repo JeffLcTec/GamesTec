@@ -36,9 +36,9 @@ with col2:
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC:wght@300;400;700&display=swap');
     .titulo {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Anton SC', sans-serif;
         font-size: 48px;
         font-weight: 900;
         text-align: center;
