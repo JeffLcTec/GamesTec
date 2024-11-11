@@ -60,12 +60,12 @@ if 'juego_seleccionado' in st.session_state and 'juego_detalles' in st.session_s
         descuento = precio_info.get("Descuento", 'N/A')
         if plataforma == "PlayStation":
             st.markdown(
-            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp; <span style='color:{color}; '> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento - {precio_info.get('Oferta', 'N/A')}",
+            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp; <span style='color:{color}; '> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento - <span style='color:#1d8348;'> {precio_info.get('Oferta', 'N/A')}",
             unsafe_allow_html=True
         )
         elif plataforma == "PC":
             st.markdown(
-            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:{color};'> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span> , Descuento - {precio_info.get('oferta', 'N/A')}",
+            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:{color};'> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span> , Descuento - <span style='color:#1d8348;'> {precio_info.get('oferta', 'N/A')}",
             unsafe_allow_html=True
         )
         elif plataforma == "Amazon":
@@ -75,12 +75,12 @@ if 'juego_seleccionado' in st.session_state and 'juego_detalles' in st.session_s
         )
         elif plataforma == "Xbox":
             st.markdown(
-            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:{color}; '> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento - {precio_info.get('GamePass', 'N/A')}",
+            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:{color}; '> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento - <span style='color:#1d8348;'> {precio_info.get('GamePass', 'N/A')}",
             unsafe_allow_html=True
         )
         elif plataforma == "Nintendo Switch":
             st.markdown(
-            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#FF6347;'> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento - {precio_info.get('Oferta', 'N/A')}",
+            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#FF6347;'> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento -<span style='color:#1d8348;'>  {precio_info.get('Oferta', 'N/A')}",
             unsafe_allow_html=True
         )
 
