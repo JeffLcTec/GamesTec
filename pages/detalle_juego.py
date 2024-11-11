@@ -98,5 +98,5 @@ else:
     if st.button("Volver a la lista de juegos"):
         st.session_state.pop('juego_seleccionado', None)
         st.session_state.pop('juego_detalles', None)
-        st.switch_page("PaginaArqui2.py")  # Volver a la página principal
+        st.switch_page("Principal.py")  # Volver a la página principal
 
