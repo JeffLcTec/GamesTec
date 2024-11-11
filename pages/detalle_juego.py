@@ -59,10 +59,16 @@ if 'juego_seleccionado' in st.session_state and 'juego_detalles' in st.session_s
         precio_actual = precio_info.get("Precio Actual", 'N/A')
         descuento = precio_info.get("Descuento", 'N/A')
         if plataforma == "PlayStation":
-            st.markdown(
-            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:{color};'> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span> , Descuento - <span style='color:#1d8348;'> {precio_info.get('oferta', 'N/A')}",
-            unsafe_allow_html=True
-        )
+            if precio_info.get('Oferta', 'N/A') == "Incluido":
+                st.markdown(
+                f"&bull;&nbsp;&nbsp;&nbsp;&nbsp; <span style='color:{color}; '> {plataforma}:</span> Incluido en PS PLUS",
+                unsafe_allow_html=True
+                )
+            else:
+                st.markdown(
+                f"&bull;&nbsp;&nbsp;&nbsp;&nbsp; <span style='color:{color}; '> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento - <span style='color:#1d8348;'> {precio_info.get('Oferta', 'N/A')}",
+                unsafe_allow_html=True
+                )
         elif plataforma == "PC":
             st.markdown(
             f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:{color};'> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span> , Descuento - <span style='color:#1d8348;'> {precio_info.get('oferta', 'N/A')}",
