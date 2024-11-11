@@ -61,6 +61,8 @@ if juegos_con_descuento:
         col = columnas[idx % num_columns]
         imagen = imagenes[juego]
         juego = juego.title()
+        descuentos= {}
+        plataformas = detalles.get("Plataformas y Precios", {})
         with col:
             if imagen:
                 st.markdown(f"<img src='{imagen}' class='game-image' alt='Imagen del juego'>", unsafe_allow_html=True)
