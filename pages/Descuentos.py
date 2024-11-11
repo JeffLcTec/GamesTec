@@ -72,6 +72,8 @@ if juegos_con_descuento:
                         if plataforma == "Xbox":
                             if detalles["Plataformas y Precios"][plataforma]["GamePass"] == True:
                                 detalles["Plataformas y Precios"]["Xbox"]["GamePass"] = "Incluido en GamePass"
+                            else:
+                                detalles["Plataformas y Precios"]["Xbox"]["GamePass"] = "N/A"
                     # Almacenar el juego seleccionado en session_state
                     st.session_state['juego_seleccionado'] = juego
                     st.session_state['juego_detalles'] = detalles  
