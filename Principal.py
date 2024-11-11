@@ -43,6 +43,9 @@ st.markdown(
         font-weight: 400;
         text-align: center;
         color: "white";
+    }.stButton > button {
+        display: block;
+        margin: 0 auto;
     }
     
     </style>
