@@ -40,7 +40,7 @@ st.markdown(
     .titulo {
         font-family: 'Anton SC', sans-serif;
         font-size: 60px;
-        font-weight: 900;
+        font-weight: 400;
         text-align: center;
         color: "white";
     }
