@@ -29,7 +29,7 @@ with open("JuegosActualizado.json", 'w') as archivo:
     json.dump(datos, archivo, indent=4)
 
 # Configuración de página principal
-col1, col2, col3 = st.columns([2, 1, 2])  # Columnas con proporciones 1:2:1
+col1, col2, col3 = st.columns([1, 2, 1])  # Columnas con proporciones 1:2:1
 with col2:
     st.image("TecLogo.png", width=300) 
 
