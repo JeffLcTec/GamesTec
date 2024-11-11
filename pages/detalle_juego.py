@@ -18,7 +18,7 @@ st.markdown("""
         font-weight: 400;
     }.game-image {
         width: 100%;
-        height: 20x; /* Altura fija para las imágenes */
+        height: 100px; /* Altura fija para las imágenes */
         object-fit: cover; /* Recorta los bordes para que la imagen se ajuste */
         border-radius: 8px; /* Bordes redondeados opcionales */
             
