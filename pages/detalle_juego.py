@@ -42,9 +42,9 @@ if 'juego_seleccionado' in st.session_state and 'juego_detalles' in st.session_s
     if imagen:
             st.markdown(f"<img src='{imagen}' class='game-image' alt='Imagen del juego'>", unsafe_allow_html=True)
     st.subheader("Puntaje")
-    st.write(f"- Critic Score: {detalles.get('Puntaje', {}).get('Critic score', 'N/A')}")
-    st.write(f"- User Score: {detalles.get('Puntaje', {}).get('User Score', 'N/A')}")
-
+    st.markdown(f"<span style='color:#ffff00; '>- Critic Score:{detalles.get('Puntaje', {}).get('Critic score', 'N/A')}</span>:", unsafe_allow_html=True)
+    st.markdown(f"<span style='color:#ffff00; '>- User Score:{detalles.get('Puntaje', {}).get('User Score', 'N/A')}</span>:", unsafe_allow_html=True)
+    
     st.subheader("Plataformas y Precios")
     plataformas = detalles.get("Plataformas y Precios", {})
 
