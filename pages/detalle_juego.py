@@ -92,7 +92,7 @@ if 'juego_seleccionado' in st.session_state and 'juego_detalles' in st.session_s
     if st.button("Volver a la lista de juegos"):
         st.session_state.pop('juego_seleccionado', None)
         st.session_state.pop('juego_detalles', None)
-        st.switch_page("PaginaArqui2.py")  # Volver a la página principal
+        st.switch_page("Principal.py")  # Volver a la página principal
 else:
     st.write("No hay un juego seleccionado. Vuelve a la lista de juegos.")
     if st.button("Volver a la lista de juegos"):
