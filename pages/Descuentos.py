@@ -93,7 +93,7 @@ if juegos_con_descuento:
                             else:
                                 pass
                         if plataforma in descuentos:        
-                           st.markdown(f"<div class='game-title' style='font-size:12px;' text-align:center; width:100%;'> {plataforma} : {descuentos[plataforma]}</div>", 
+                           st.markdown(f"<div class='game-title' style='font-size:15px;' text-align:center; width:100%;'> {plataforma} : {descuentos[plataforma]}</div>", 
                                         unsafe_allow_html=True
                                     )
 
