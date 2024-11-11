@@ -106,6 +106,7 @@ st.markdown("""
         text-overflow: ellipsis;
         display: flex;
         text-align: center;
+        justify-content: center
         
     }
     .game-image {
