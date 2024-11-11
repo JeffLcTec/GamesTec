@@ -80,7 +80,7 @@ if 'juego_seleccionado' in st.session_state and 'juego_detalles' in st.session_s
         )
         elif plataforma == "Nintendo Switch":
             st.markdown(
-            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:ff0000;'> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento - {precio_info.get('Oferta', 'N/A')}",
+            f"&bull;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#ff0000;'> {plataforma}:</span> Precio Actual -<span style='color:#1d8348;'> {precio_info.get('Precio', 'N/A')}</span>, Descuento - {precio_info.get('Oferta', 'N/A')}",
             unsafe_allow_html=True
         )
 
