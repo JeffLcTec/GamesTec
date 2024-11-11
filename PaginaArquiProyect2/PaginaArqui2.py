@@ -1,5 +1,12 @@
-
-
+import streamlit as st
+import pandas as pd
+import json
+import requests
+import firebase_admin
+from firebase_admin import credentials, db
+from datetime import datetime
+import json
+import os
 # Inicializa Firebase con tu archivo de credenciales
 if not firebase_admin._apps:
     cred = credentials.Certificate("arqui-a68cb-firebase-adminsdk-wvdaf-5b49548963.json")
