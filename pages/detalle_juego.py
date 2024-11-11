@@ -17,7 +17,7 @@ st.markdown("""
         font-family: 'bebas Neue', sans-serif;
         font-weight: 400;
     }.game-image {
-        width: 100%;
+        width: 100px;
         height: 200px; /* Altura fija para las imágenes */
         object-fit: cover; /* Recorta los bordes para que la imagen se ajuste */
         border-radius: 8px; /* Bordes redondeados opcionales */
