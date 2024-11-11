@@ -140,6 +140,14 @@ for idx, (juego, detalles) in enumerate(juegos):
         
         st.markdown(f"<div class='game-title'>{juego.title()}</div>", unsafe_allow_html=True)
         if st.button(f"Ver Detalles", key=f"btn_{juego}", help=juego.title()):
+            plataformas = detalles.get("Plataformas y Precios", {})
+
+            for plataforma, precio_info in plataformas.items():
+                if plataforma == "Xbox":
+                    if detalles["Plataformas y Precios"][plataforma]["GamePass"] == True:
+                        detalles["Plataformas y Precios"]["Xbox"]["GamePass"] = "Incluido en GamePass"
+                    else:
+                        detalles["Plataformas y Precios"]["Xbox"]["GamePass"] = "N/A"
             # Almacenar el juego seleccionado en session_state
             st.session_state['juego_seleccionado'] = juego
             st.session_state['juego_detalles'] = detalles  
