@@ -44,10 +44,7 @@ st.markdown(
         text-align: center;
         color: "white";
     }
-    .stButton > button {
-        display: block;
-        margin: 0 auto;
-    }
+    
     </style>
     <div class="titulo">
         GamesTEC
