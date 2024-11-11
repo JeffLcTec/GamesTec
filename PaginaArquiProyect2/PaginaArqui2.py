@@ -1,12 +1,3 @@
-import streamlit as st
-import pandas as pd
-import json
-import requests
-import firebase_admin
-from firebase_admin import credentials, db
-from datetime import datetime
-import json
-import os
 
 
 # Inicializa Firebase con tu archivo de credenciales
