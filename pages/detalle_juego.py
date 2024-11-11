@@ -53,7 +53,7 @@ if 'juego_seleccionado' in st.session_state and 'juego_detalles' in st.session_s
             "Xbox": "#32CD32",     # Azul
             "PlayStation": "#001fff",  # Naranja
             "PC": "#1E90FF",       # Verde
-            "Switch": "#FF6347",   # Rojo
+            "Switch": "ff0000",   # Rojo
             "Amazon" : "#FFD700" 
         }.get(plataforma, "#FFFFFF")  # Blanco por defecto si no coincide con ninguna
         precio_actual = precio_info.get("Precio Actual", 'N/A')
