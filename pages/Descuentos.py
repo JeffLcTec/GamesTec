@@ -33,11 +33,12 @@ st.markdown("""
     }
     .game-title {
         width: 100%;
+        font-size:20px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         display: flex;
-        text-align: center;
+        justify-content: center
         
     }
     .game-image {
@@ -64,16 +65,39 @@ if juegos_con_descuento:
             if imagen:
                 st.markdown(f"<img src='{imagen}' class='game-image' alt='Imagen del juego'>", unsafe_allow_html=True)
                 st.markdown(f"<div class='game-title'>{juego.title()}</div>", unsafe_allow_html=True)
-
-                if st.button(f"Ver Detalles", key=f"btn_{juego}", help=juego.title()):
-                    plataformas = detalles.get("Plataformas y Precios", {})
-
-                    for plataforma, precio_info in plataformas.items():
+                for plataforma, precio_info in plataformas.items():
                         if plataforma == "Xbox":
                             if detalles["Plataformas y Precios"][plataforma]["GamePass"] == True:
                                 detalles["Plataformas y Precios"]["Xbox"]["GamePass"] = "Incluido en GamePass"
+                                descuentos[plataforma]= detalles["Plataformas y Precios"]["Xbox"].get("GamePass", "N/A")
+                        if plataforma == "PlayStation":
+                            try:
+                                precio_orig = int(float((precio_info.get("Precio", "N/A").replace('US$', ''))))
+                                precio_fin = int(float((precio_info.get("Oferta", "N/A").replace('US$', ''))))
+                                descuento = ((precio_orig - precio_fin) / precio_orig) * 100
+                                descuentos[plataforma]= f"-{int(descuento)}%"
+                            except Exception:
+                                pass
+                            if precio_info.get("Oferta", "N/A") == "Incluido":
+                                descuentos[plataforma]= "Incluido en PS Plus"
+                        if plataforma == "PC":
+                            if precio_info.get("oferta", "N/A")[-1] == '%':
+                                descuentos[plataforma]= precio_info.get("oferta", "N/A")
                             else:
-                                detalles["Plataformas y Precios"]["Xbox"]["GamePass"] = "N/A"
+                                pass
+                        if plataforma == "Amazon":
+                            if precio_info.get("oferta", "N/A")[-1] == '%':
+                                descuentos[plataforma]= precio_info.get("oferta", "N/A")
+                            else:
+                                pass
+                        if plataforma in descuentos:        
+                           st.markdown(f"<div class='game-title' style='font-size:12px;' text-align:center; width:100%;'> {plataforma} : {descuentos[plataforma]}</div>", 
+                                        unsafe_allow_html=True
+                                    )
+
+                descuentos.clear()
+                if st.button(f"Ver Detalles", key=f"btn_{juego}", help=juego.title()):
+                    
                     # Almacenar el juego seleccionado en session_state
                     st.session_state['juego_seleccionado'] = juego
                     st.session_state['juego_detalles'] = detalles  
