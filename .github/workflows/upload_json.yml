@@ -23,5 +23,7 @@ jobs:
           pip install firebase-admin requests
 
       - name: Run Python script
-        run: python firebase.py
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "arqui-a68cb-firebase-adminsdk-wvdaf-5b49548963.json"
+        run: python nombre_del_archivo.py
 
