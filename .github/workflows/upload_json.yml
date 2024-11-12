@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x' # Cambia a la versión de Python que necesites
+          python-version: '3.13.0' # Cambia a la versión de Python que necesites
 
       - name: Run Python script
         run: python firebase.py
