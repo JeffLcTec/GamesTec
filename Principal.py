@@ -1,37 +1,32 @@
 import streamlit as st
 import pandas as pd
 import json
-import requests
-import firebase_admin
-from firebase_admin import credentials, db
 from datetime import datetime
-import json
 import os
 
+# ----------------------------
+# CONFIGURACIÓN DE LA PÁGINA
+# ----------------------------
+st.set_page_config(page_title="GamesTEC", layout="wide")
 
-# Inicializa Firebase con tu archivo de credenciales
-if not firebase_admin._apps:
-    cred = credentials.Certificate("arqui-a68cb-firebase-adminsdk-wvdaf-5b49548963.json")
-    firebase_admin.initialize_app(cred, {
-        'databaseURL': 'https://arqui-a68cb-default-rtdb.firebaseio.com/'
-    })
+# ----------------------------
+# CARGA DE DATOS (SIN FIREBASE)
+# ----------------------------
+with open("JuegosActualizado.json", "r", encoding="utf-8") as file:
+    data = json.load(file)
 
-# with open("juegosjson.json", 'r') as archivo:
-#     juegos = json.load(archivo)
+with open("imagenes.json", "r", encoding="utf-8") as file:
+    imagenes = json.load(file)
 
-# ref = db.reference("Lista de juegos")
-# ref.set(juegos)
+if 'juego_seleccionado' in st.session_state:
+    st.session_state.pop('juego_seleccionado')
 
-ref = db.reference("Juegos Actualizados")
-datos = ref.get()
-
-with open("JuegosActualizado.json", 'w') as archivo:
-    json.dump(datos, archivo, indent=4)
-
-# Configuración de página principal
-col1, col2, col3 = st.columns([3, 2, 3])  # Columnas con proporciones 1:2:1
+# ----------------------------
+# HEADER / LOGO
+# ----------------------------
+col1, col2, col3 = st.columns([3, 2, 3])
 with col2:
-    st.image("TecLogo.png", width=300) 
+    st.image("TecLogo.png", width=300)
 
 st.markdown(
     """
@@ -40,124 +35,108 @@ st.markdown(
     .titulo {
         font-family: 'Anton SC', sans-serif;
         font-size: 60px;
-        font-weight: 400;
         text-align: center;
-        color: "white";
-    }.stButton > button {
+        color: white;
+    }
+    .stButton > button {
         display: block;
         margin: 0 auto;
     }
-    
     </style>
-    <div class="titulo">
-        GamesTEC
-    </div>
-    """, 
+    <div class="titulo">GamesTEC</div>
+    """,
     unsafe_allow_html=True
 )
-st.markdown("<h3 style='text-align: center; color: gray;'>Bienvenido a la recopilación de juegos del TEC</h3>", unsafe_allow_html=True)
-st.markdown("<br>", unsafe_allow_html=True)  # Añadir saltos de línea
 
+st.markdown(
+    "<h3 style='text-align: center; color: gray;'>Bienvenido a la recopilación de juegos del TEC</h3>",
+    unsafe_allow_html=True
+)
+st.markdown("<br>", unsafe_allow_html=True)
 
+# ----------------------------
+# BOTÓN DE NAVEGACIÓN
+# ----------------------------
 col1, col2, col3 = st.columns([2, 2, 2])
-
 with col2:
-    if st.button('Ver Juegos con Descuentos'):
+    if st.button("Ver Juegos con Descuentos"):
         st.switch_page("pages/Descuentos.py")
-# Estilo CSS personalizado para darle un toque adicional
+
+# ----------------------------
+# ESTILOS GENERALES
+# ----------------------------
 st.markdown("""
-    <style>
-    body {
-        background-color: #1a1a1a;
-        color: white;
-    }
-    h1, h3 {
-        font-family: 'Arial', sans-serif;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-# Cargar datos del archivo JSON
-with open('JuegosActualizado.json', 'r') as file:
-    data = json.load(file)
-with open('imagenes.json', 'r') as file:
-    imagenes = json.load(file)
-if 'juego_seleccionado' in st.session_state:
-    st.session_state.pop('juego_seleccionado')
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC:wght@300;400;700&display=swap');
 
+body {
+    background-color: #1a1a1a;
+    color: white;
+}
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Anton SC', sans-serif;
+}
 
+p, span, div, li, a {
+    font-family: 'Bebas Neue', sans-serif;
+}
 
-st.markdown("""
-    <style>
-            /* Importar Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Anton+SC:wght@300;400;700&display=swap');
-    /* Cambiar la fuente de los títulos */
-    h1, h2, h3, h4, h5, h6{
-        font-family: 'Anton SC', sans-serif;
-        font-weight: 400;
-    }
+.game-title {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
-    /* Cambiar la fuente del texto general */
-    p, span, div, li, a  {
-        font-family: 'bebas Neue', sans-serif;
-        font-weight: 150;
-    }
-    .game-title {
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        display: flex;
-        text-align: center;
-        justify-content: center
-        
-    }
-    .game-image {
-        width: 100%;
-        height: 150px; /* Altura fija para las imágenes */
-        object-fit: cover; /* Recorta los bordes para que la imagen se ajuste */
-        border-radius: 8px; /* Bordes redondeados opcionales */
-            
-    }
-    </style>
-    """, unsafe_allow_html=True)
+.game-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+</style>
+""", unsafe_allow_html=True)
 
-
-
-# Mostrar lista de juegos y sus detalles
+# ----------------------------
+# LISTA DE JUEGOS
+# ----------------------------
 st.subheader("Lista de Juegos")
 
 num_columns = 4
 columnas = st.columns(num_columns)
-
-# Crear una lista con los datos de cada juego
 juegos = list(data.items())
 
 for idx, (juego, detalles) in enumerate(juegos):
     col = columnas[idx % num_columns]
-    imagen = imagenes[juego]
+    imagen = imagenes.get(juego)
+
     with col:
         if imagen:
-            st.markdown(f"<img src='{imagen}' class='game-image' alt='Imagen del juego'>", unsafe_allow_html=True)
-          # Coloca el nombre del juego en un contenedor independiente
-        
-        
-        st.markdown(f"<div class='game-title'>{juego.title()}</div>", unsafe_allow_html=True)
-        if st.button(f"Ver Detalles", key=f"btn_{juego}", help=juego.title()):
+            st.markdown(
+                f"<img src='{imagen}' class='game-image'>",
+                unsafe_allow_html=True
+            )
+
+        st.markdown(
+            f"<div class='game-title'>{juego.title()}</div>",
+            unsafe_allow_html=True
+        )
+
+        if st.button("Ver Detalles", key=f"btn_{juego}"):
             plataformas = detalles.get("Plataformas y Precios", {})
 
-            for plataforma, precio_info in plataformas.items():
-                if plataforma == "Xbox":
-                    if detalles["Plataformas y Precios"][plataforma]["GamePass"] == True:
-                        detalles["Plataformas y Precios"]["Xbox"]["GamePass"] = "Incluido en GamePass"
-                    else:
-                        detalles["Plataformas y Precios"]["Xbox"]["GamePass"] = "N/A"
-            # Almacenar el juego seleccionado en session_state
-            st.session_state['juego_seleccionado'] = juego
-            st.session_state['juego_detalles'] = detalles  
+            if "Xbox" in plataformas:
+                plataformas["Xbox"]["GamePass"] = (
+                    "Incluido en GamePass"
+                    if plataformas["Xbox"].get("GamePass") is True
+                    else "N/A"
+                )
+
+            st.session_state["juego_seleccionado"] = juego
+            st.session_state["juego_detalles"] = detalles
             st.switch_page("pages/detalle_juego.py")
+
         st.write("---")
-        st.markdown("<br>", unsafe_allow_html=True)  # Espacio más grande
-
-
